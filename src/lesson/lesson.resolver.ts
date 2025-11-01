@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { LessonType } from './lesson.type';
+import { LessonType } from './types/lesson.type';
 import { LessonService } from './lesson.service';
 import { CreateLessonInput } from './lesson.input';
 
