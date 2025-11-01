@@ -22,7 +22,21 @@ export class LessonService {
     return this.lessonRepository.save(lesson);
   }
 
-  async findAll(): Promise<Lesson[]> {
+  async findAllLessonsPaginated(
+    page: number,
+    limit: number,
+  ): Promise<{ lessons: Lesson[]; totalItems: number }> {
+    const [lessons, totalItems] = await Promise.all([
+      this.lessonRepository.find({
+        skip: (page - 1) * limit,
+        take: limit,
+      }),
+      this.lessonRepository.count(),
+    ]);
+    return { lessons, totalItems };
+  }
+
+  async findAllLessons(): Promise<Lesson[]> {
     return this.lessonRepository.find();
   }
 
