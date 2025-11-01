@@ -6,13 +6,8 @@ import { LessonService } from './lesson.service';
 export class LessonResolver {
   constructor(private lessonService: LessonService) {}
   @Query((returns) => LessonType)
-  lesson() {
-    return {
-      id: 'some-id',
-      name: 'Sample Lesson',
-      startDate: new Date().toISOString(),
-      endDate: new Date().toISOString(),
-    };
+  lesson(@Args('id') id: string) {
+    return this.lessonService.findOne(id);
   }
 
   @Mutation((returns) => LessonType)
