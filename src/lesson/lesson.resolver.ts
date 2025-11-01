@@ -6,10 +6,6 @@ import { CreateLessonInput } from './lesson.input';
 @Resolver((of) => LessonType)
 export class LessonResolver {
   constructor(private lessonService: LessonService) {}
-  @Query((returns) => LessonType)
-  lesson(@Args('id') id: string) {
-    return this.lessonService.findOne(id);
-  }
 
   @Mutation((returns) => LessonType)
   createLesson(@Args('body') body: CreateLessonInput) {
@@ -20,5 +16,10 @@ export class LessonResolver {
   @Query((returns) => [LessonType])
   lessons() {
     return this.lessonService.findAll();
+  }
+
+  @Query((returns) => LessonType)
+  lesson(@Args('id') id: string) {
+    return this.lessonService.findOne(id);
   }
 }
