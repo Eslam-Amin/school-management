@@ -6,6 +6,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Lesson } from './lesson/lesson.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LessonModule } from './lesson/lesson.module';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { LessonModule } from './lesson/lesson.module';
       introspection: true,
     }),
     LessonModule,
+    StudentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
