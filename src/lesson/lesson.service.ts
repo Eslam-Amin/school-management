@@ -46,4 +46,14 @@ export class LessonService {
     if (!lesson) throw new NotFoundException('Lesson not found');
     return lesson;
   }
+
+  async assignStudentToLesson(
+    lessonId: string,
+    studentIds: string[],
+  ): Promise<Lesson> {
+    const lesson = await this.lessonRepository.findOneBy({ id: lessonId });
+    if (!lesson) throw new NotFoundException('Lesson not found');
+    lesson.students = [...lesson.students, ...studentIds];
+    return this.lessonRepository.save(lesson);
+  }
 }
