@@ -32,4 +32,11 @@ export class StudentService {
     if (!student) throw new NotFoundException('Student not found');
     return student;
   }
+
+  async findMany(studentIds: string[]): Promise<Student[]> {
+    const students = await this.studentRepository.find({
+      where: { id: { $in: studentIds } } as any,
+    });
+    return students;
+  }
 }
