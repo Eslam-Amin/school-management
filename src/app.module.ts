@@ -7,6 +7,7 @@ import { Lesson } from './lesson/lesson.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LessonModule } from './lesson/lesson.module';
 import { StudentModule } from './student/student.module';
+import { Student } from './student/student.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { StudentModule } from './student/student.module';
       url: 'mongodb://localhost:27017/school-management',
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
-      entities: [Lesson],
+      entities: [Lesson, Student],
       synchronize: true,
     }),
 
