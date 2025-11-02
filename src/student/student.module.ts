@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Student } from './student.entity';
-import { LessonResolver } from 'src/lesson/lesson.resolver';
+import { StudentResolver } from './student.resolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Student])],
-  providers: [StudentService, LessonResolver],
+  providers: [StudentService, StudentResolver],
 })
 export class StudentModule {}
